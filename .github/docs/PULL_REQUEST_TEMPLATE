@@ -1,0 +1,20 @@
+#### Qual é o tipo do problema ?
+
+- [x] Fix
+- [ ] Feature
+- [ ] Release
+- [ ] Docs
+
+#### Qual o problema que está sendo resolvido?
+
+O ícone de login do usuário estava cortado nas bordas.
+
+#### Como validar:
+
+1. Acesse Google.com
+2. Verifique se o ícone do usuário está com seu tamanho total, sem recortes nas bordas.
+
+#### Screenshot:
+
+![image](https://user-images.githubusercontent.com/89042755/174146808-7ef9973f-5e5a-4d21-b584-f8f4acc47b43.png)
+
