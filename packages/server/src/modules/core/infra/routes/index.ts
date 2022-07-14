@@ -4,6 +4,6 @@ export class Route {
   }
 
   init() {
-
+    return
   }
 }
