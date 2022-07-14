@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "commonjs",
+    "target": "es2019",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "rootDir": "src",
+    "baseUrl": "src",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "paths": {
+      "@/*": ["*"]
+    },
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src", "src/**/*.json"],
+  "exclude": [
+    "./node_modules/*",
+    "dist"
+  ]
+}
