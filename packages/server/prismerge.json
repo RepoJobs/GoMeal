@@ -1,0 +1,9 @@
+{
+    "app": {
+        "inputs": [
+            "./src/infra/db/prisma/core/*.prisma"
+        ],
+        "fragments": {},
+        "output": "./src/infra/db/prisma/schema.prisma"
+    }
+}
