@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:12
+    container_name: gomeal-pg
+    environment:
+      POSTGRES_DB: gomealdb
+      POSTGRES_USER: gomeal
+      POSTGRES_PASSWORD: gomeal
+    network_mode: bridge
+    ports:
+      - 5432:5432
+    volumes:
+      - gomeal_pg_data:/var/lib/postgresql/data
+volumes:
+  gomeal_pg_data:
+    driver: local
