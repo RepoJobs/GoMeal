@@ -13,9 +13,14 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-saga": "^1.1.3",
     "typescript": "^4.7.3",
-    "web-vitals": "^2.1.4",
-    "ui-components": "*"
+    "ui-components": "*",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "sass": "^1.53.0"
   },
   "scripts": {
     "start": "react-scripts start",

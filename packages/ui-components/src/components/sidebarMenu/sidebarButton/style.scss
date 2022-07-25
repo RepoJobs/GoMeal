@@ -1,0 +1,42 @@
+@import "../../../global/styles/variables.scss";
+
+.sidebarButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 15rem;
+    padding: 4px 14px;
+    margin-bottom: 10%;
+    border: transparent;
+    border-radius: 14px;
+    background-color: #FFF;
+    
+    .buttonText {
+      font-size: 16px;
+      font-weight: 500;
+      margin-left: 1rem;
+      color: $neutral-gray-01;
+    }
+
+    .buttonIcon {
+        position: static;
+        margin-left: 1rem;
+        width: 40px;
+        height: 35px;
+        filter: invert(74%) sepia(4%) saturate(400%) hue-rotate(220deg) brightness(84%) contrast(1%);
+    }
+    
+    &:hover {
+        background-color: $primary-color-yellow;
+        box-shadow: 0px 10px 60px #2e2e2e0d;
+
+        
+        .buttonText {
+            color: $primary-white-default;
+        }
+
+        .buttonIcon {
+            filter: none;
+        }
+    }
+}

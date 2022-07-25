@@ -17,5 +17,6 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "name": "GoMeal"
+  "name": "GoMeal",
+  "dependencies": {}
 }

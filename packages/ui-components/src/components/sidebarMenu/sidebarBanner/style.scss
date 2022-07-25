@@ -1,0 +1,25 @@
+@import "../../../global/styles/variables.scss";
+
+.sidebarBanner {
+    width: 85%;
+    height: auto;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background-color: $primary-color-yellow;
+    background-image: url("../../../assets/images/bannerBackground.svg");
+    background-size: cover;
+    
+    .bannerText {
+        font-size: 16px;
+        font-weight: 700;
+        color: $primary-white-default;
+    }
+
+    .bannerButton {
+        border-radius: 16px;
+        padding: 5px 12px;
+        border-color: transparent;
+        background-color: $primary-white-default;
+        color: $primary-black-default;
+    }
+}
