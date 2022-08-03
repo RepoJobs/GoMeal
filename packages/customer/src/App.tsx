@@ -8,15 +8,15 @@ import iconMenu from './assets/icons/RestaurantLocation.svg'
 function App() {
   return (
     <div className="App">
-      <SidebarMenu 
+      <SidebarMenu
         logotype={logo}
         listTabs={[
           {
-            tabName: "Dashboard",
+            tabName: "Testezão",
             tabImage: iconMenu
           },
           {
-            tabName: "Offers",
+            tabName: "Esse cara é foda",
             tabImage: iconMenu
           },
           {
