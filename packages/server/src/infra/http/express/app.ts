@@ -2,7 +2,7 @@ import express, { Application } from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
-import { Route } from '@/infra/routes'
+import { Route } from '@/infra/http/express/routes'
 
 dotenv.config()
 
