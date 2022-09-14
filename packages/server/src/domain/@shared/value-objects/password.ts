@@ -1,3 +1,5 @@
+import { InputError } from '@/domain/@shared/exceptions/input.error'
+
 export class Password {
   private _password: string
 
@@ -8,9 +10,9 @@ export class Password {
 
   private validate() {
     if(!this._password || this._password.length == 0)
-      throw new Error('Password cannot be empty')
+      throw new InputError('Password cannot be empty')
 
     if(this._password.length < 8)
-      throw new Error('Password must have least 8 characters')
+      throw new InputError('Password must have least 8 characters')
   }
 }

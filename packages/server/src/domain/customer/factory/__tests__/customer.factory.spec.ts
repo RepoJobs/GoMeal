@@ -1,9 +1,17 @@
+import { Address } from '@/domain/@shared/value-objects/address'
+import { Email } from '@/domain/@shared/value-objects/email'
+import { Name } from '@/domain/@shared/value-objects/name'
+import { Password } from '@/domain/@shared/value-objects/password'
 import { CustomerFactory } from '../customer.factory'
 
 describe('Customer factory unit test', () => {
   it('should create a customer without address', () => {
     const customerFactory = new CustomerFactory()
-    const customer = customerFactory.create('Joao', 'Silva', 'joao@teste.com', '12345678')
+    const customer = customerFactory.create(
+      new Name('Joao', 'Silva'), 
+      new Email('joao@teste.com'), 
+      new Password('12345678'),
+    )
 
     expect(customer).toBeDefined()
     expect(customer.name.fullName).toBe('Joao Silva')
@@ -15,7 +23,12 @@ describe('Customer factory unit test', () => {
 
   it('should create a customer with address', () => {
     const customerFactory = new CustomerFactory()
-    const customer = customerFactory.createWithAddress('Joao', 'Silva', 'joao@teste.com', '12345678', 'Street 1', '10', '60999-666', 'city 1', 'state 1', 'country 1')
+    const address = new Address('Street 1', '10', '60999-666', 'city 1', 'state 1', 'country 1')
+    const customer = customerFactory.createWithAddress(
+      new Name('Joao', 'Silva'), 
+      new Email('joao@teste.com'), 
+      new Password('12345678'),
+      address)
 
     expect(customer).toBeDefined()
     expect(customer.name.fullName).toBe('Joao Silva')

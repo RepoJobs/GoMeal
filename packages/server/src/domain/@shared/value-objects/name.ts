@@ -1,3 +1,5 @@
+import { InputError } from '@/domain/@shared/exceptions/input.error'
+
 export class Name {
   private _firstName: string
   private _lastName: string
@@ -23,6 +25,6 @@ export class Name {
 
   private validate() {
     if(!this.firstName || this.firstName.length == 0)
-      throw Error('The first name cannot be empty')
+      throw new InputError('The first name cannot be empty')
   }
 }

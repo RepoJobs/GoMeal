@@ -1,15 +1,13 @@
 import { CustomerDTO } from '@/application/customer/dto/customer.dto'
-import { CustomerFactory } from '@/domain/customer/factory/customer.factory'
+import { Address } from '@/domain/@shared/value-objects/address'
+import { Email } from '@/domain/@shared/value-objects/email'
+import { Name } from '@/domain/@shared/value-objects/name'
 
 describe('Customer DTO unit test', () => {
   it('Should create customer dto', () => {
-    const customerFactory = new CustomerFactory()
-    const customer = customerFactory.createWithAddress(
-      'Joao', 'da Silva', 'joao@teste.com', '12345678',
-      'street 1', '10', '60999-888', 'city 1', 'state 1', 'country 1'
-    )
+    const address = new Address('street 1', '10', '60999-888', 'city 1', 'state 1', 'country 1')
+    const customerDto = new CustomerDTO(new Name('Joao', 'da Silva'), new Email('joao@teste.com'), address)
 
-    const customerDto = new CustomerDTO(customer.name, customer.email, customer.address)
     expect(customerDto).toBeDefined()
     expect(customerDto.firstName).toBe('Joao')
     expect(customerDto.lastName).toBe('da Silva')
@@ -25,11 +23,8 @@ describe('Customer DTO unit test', () => {
   })
 
   it('Should create customer dto with null address', () => {
-    const customerFactory = new CustomerFactory()
-    const customer = customerFactory.create(
-      'Joao', 'da Silva', 'joao@teste.com', '12345678')
+    const customerDto = new CustomerDTO(new Name('Joao', 'da Silva'), new Email('joao@teste.com'), null)
 
-    const customerDto = new CustomerDTO(customer.name, customer.email, customer.address)
     expect(customerDto).toBeDefined()
     expect(customerDto.firstName).toBe('Joao')
     expect(customerDto.lastName).toBe('da Silva')

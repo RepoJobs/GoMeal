@@ -1,3 +1,5 @@
+import { InputError } from '@/domain/@shared/exceptions/input.error'
+
 export class Address {
   private _street: string
   private _number: string
@@ -43,21 +45,21 @@ export class Address {
 
   validate() {
     if(!this.street || this.street.length == 0)
-      throw Error('Street name cannot be empty')
+      throw new InputError('Street name cannot be empty')
 
     if(!this.number || this.number.length == 0)
-      throw Error('Address number cannot be empty')
+      throw new InputError('Address number cannot be empty')
 
     if(!this.zip_code || this.zip_code.length == 0)
-      throw Error('Zip code cannot be empty')
+      throw new InputError('Zip code cannot be empty')
 
     if(!this.city || this.city.length == 0)
-      throw Error('City cannot be empty')
+      throw new InputError('City cannot be empty')
 
     if(!this.state || this.state.length == 0)
-      throw Error('State cannot be empty')
+      throw new InputError('State cannot be empty')
 
     if(!this.country || this.country.length == 0)
-      throw Error('Country cannot be empty')
+      throw new InputError('Country cannot be empty')
   }
 }

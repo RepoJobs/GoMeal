@@ -1,3 +1,5 @@
+import { InputError } from '@/domain/@shared/exceptions/input.error'
+
 export class Email {
   private _email: string
 
@@ -14,9 +16,9 @@ export class Email {
     const regex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i
 
     if(!this.email || this.email.length == 0)
-      throw Error('Email cannot be empty')
+      throw new InputError('Email cannot be empty')
 
     if(!regex.test(this.email))
-      throw Error(`Email "${this.email}" is invalid.`)
+      throw new InputError(`Email "${this.email}" is invalid.`)
   }
 }
