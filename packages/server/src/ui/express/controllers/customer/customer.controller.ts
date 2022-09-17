@@ -10,11 +10,11 @@ export class CustomerController {
     this._customerRepository = customerRepository
   }
 
-  register(req: Request, res: Response) {
+  async register(req: Request, res: Response) {
     try {
-      return res.status(201).json(
-        new CustomerRegisterService(this._customerRepository).execute(req.body)
-      )
+      const response = await new CustomerRegisterService(this._customerRepository).execute(req.body)
+      
+      return res.status(201).json(response)
     } catch(err) {
       return checkAllErrors(err, res)
     }

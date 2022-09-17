@@ -1,4 +1,4 @@
-import express, { Application } from 'express'
+import express, { Application, Router } from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
@@ -9,6 +9,7 @@ dotenv.config()
 export class ExpressApp {
   private express: Application
   private serverPort = process.env.PORT || 3000
+  private router: Router
 
   constructor() {
     this.express = express()
@@ -22,7 +23,8 @@ export class ExpressApp {
   }
 
   routes() {
-    new Route().init()
+    this.router = new Route().router
+    this.express.use(this.router)
   }
 
   middlewares() {
