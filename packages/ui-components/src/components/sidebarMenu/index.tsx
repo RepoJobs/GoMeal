@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ISidebarMenu } from './types'
 import SidebarButton from './sidebarButton';
-import SidebarBanner from './sidebarBanner';
+import AdvertisementCard from './AdvertisementCard ';
 import './style.scss';
 
 const SidebarMenu = ({ logotype, listTabs }: ISidebarMenu) => {
@@ -14,12 +14,11 @@ const SidebarMenu = ({ logotype, listTabs }: ISidebarMenu) => {
                <img src={logotype} />
             </div>
             <nav className='sidebarNavlist'>
-               {
-                  listTabs.map(
+               {listTabs.map(
                      (item, index) => (
                         <SidebarButton
-                           tabName={item.tabName}
-                           tabImage={item.tabImage}
+                           text={item.text}
+                           icon={item.icon}
                            tabIndex={index}
                            key={index}
                         />
@@ -27,7 +26,7 @@ const SidebarMenu = ({ logotype, listTabs }: ISidebarMenu) => {
                   )
                }
             </nav>
-            <SidebarBanner bannerText='Upgrade your Account to Get Free Voucher' bannerTextButton='Upgrade' />
+            <AdvertisementCard bannerText='Upgrade your Account to Get Free Voucher' bannerTextButton='Upgrade' />
          </aside>
       </>
    )

@@ -1,8 +1,8 @@
 import React from 'react';
-import { ISidebarBanner } from './types';
+import { AdvertisementCardProps } from './types';
 import './style.scss';
 
-const SidebarBanner = ({ bannerText, bannerTextButton }: ISidebarBanner ) => {
+const AdvertisementCard = ({ bannerText, bannerTextButton }: AdvertisementCardProps ) => {
 	return(
 		<>
 			<div className='sidebarBanner'>
@@ -13,4 +13,4 @@ const SidebarBanner = ({ bannerText, bannerTextButton }: ISidebarBanner ) => {
 	)
 }
 
-export default SidebarBanner;
+export default AdvertisementCard;

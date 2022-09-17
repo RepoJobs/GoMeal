@@ -1,4 +1,4 @@
-export interface ISidebarBanner {
+export interface AdvertisementCardProps {
     bannerText: string;
     bannerTextButton: string;
 }

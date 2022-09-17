@@ -1,6 +1,6 @@
-import { IButtonProps } from "./sidebarButton/types";
+import { ISidebarButtonProps } from './sidebarButton/types';
 
 export interface ISidebarMenu {
     logotype: string;
-    listTabs: IButtonProps[]
+    listTabs: ISidebarButtonProps[]
 }

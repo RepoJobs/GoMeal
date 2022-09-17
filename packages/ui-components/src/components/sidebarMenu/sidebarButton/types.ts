@@ -1,4 +1,4 @@
-export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    tabName: string;
-    tabImage: string;
+export interface ISidebarButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    text: string;
+    icon: string;
 }

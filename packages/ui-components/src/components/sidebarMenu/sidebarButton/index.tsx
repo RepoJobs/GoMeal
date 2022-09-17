@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { IButtonProps } from './types';
+import { ISidebarButtonProps } from './types';
 
 import './style.scss';
 
-const SidebarButton = ({tabName, tabImage, ...rest}: IButtonProps) => {
+const SidebarButton = ({text, icon, ...rest}: ISidebarButtonProps) => {
 
 	return(
         <button className='sidebarButton'>
-            <img className='buttonIcon' src={tabImage} />
-            <p className='buttonText'>{tabName}</p>
+            <img className='buttonIcon' src={icon} alt=""/>
+            <p className='buttonText'>{text}</p>
         </button>
 	)
 }
