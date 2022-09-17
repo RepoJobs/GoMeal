@@ -6,3 +6,6 @@ export const ResponseCommon = (error: any, res: Response) => {
 
   return res.status(data.status || 400).json(data?.message || {})
 }
+
+export const ResponseGenericError = (res: Response) => 
+  res.status(500).json({ message: 'Internal server error' })
