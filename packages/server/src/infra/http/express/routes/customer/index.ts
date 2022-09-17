@@ -1,5 +1,6 @@
 import { Router } from 'express'
 
+import { customerController } from '@/ui/express/controllers/customer'
 
 export class CustomerRouter {
   private _router: Router
@@ -12,7 +13,7 @@ export class CustomerRouter {
 
   init() {
     this._router.post('/customer/register', async (req, res) => {
-      return
+      return customerController.register(req, res)
     })
   }
 }

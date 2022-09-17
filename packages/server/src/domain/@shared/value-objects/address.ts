@@ -1,4 +1,4 @@
-import { InputError } from '@/domain/@shared/exceptions/input.error'
+import { InputError } from '@/domain/@shared/errors/input.error'
 
 export class Address {
   private _street: string

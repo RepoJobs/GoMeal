@@ -1,4 +1,3 @@
-import { InputError } from '@/domain/@shared/exceptions/input.error'
 import { CustomerRegisterService, ICustomerRegisterData } from '@/application/customer/services/customer.register.service'
 
 describe('Customer register application service unit test', () => {
