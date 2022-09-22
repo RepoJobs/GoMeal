@@ -1,0 +1,16 @@
+@import '../../global/styles/variables.scss';
+
+.sidebar {
+    width: 240px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 20px;
+    background-color: $primary-white-default;
+
+    .logotype {
+        margin-bottom: 4rem;
+    }
+}
