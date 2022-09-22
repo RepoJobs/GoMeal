@@ -15,18 +15,22 @@
     "lint:eslint": "eslint . --ext .ts",
     "lint:prettier": "npx prettier --check .",
     "tsc": "tsc",
-    "prisma:merge": "npx prismerge -i prismerge.json",
-    "prisma:migrate": "npx prisma migrate dev"
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migration-reset": "npx prisma migrate reset --force",
+    "prisma:studio": "npx prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^4.3.1",
+    "@types/crypto-js": "^4.1.1",
     "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "module-alias": "^2.2.2",
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
-    "@prisma-utils/prismerge": "^1.6.2",
     "@swc/core": "^1.2.215",
     "@swc/jest": "^0.2.21",
     "@types/cors": "^2.8.12",
@@ -37,8 +41,8 @@
     "@typescript-eslint/parser": "^5.30.6",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
-    "nodemon": "^2.0.20",
     "jest": "^28.1.3",
+    "nodemon": "^2.0.20",
     "prettier": "2.7.1",
     "prisma": "^4.1.0"
   },
