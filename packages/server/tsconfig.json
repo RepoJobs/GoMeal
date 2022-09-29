@@ -5,18 +5,20 @@
     "target": "es2019",
     "esModuleInterop": true,
     "allowJs": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": "src",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "resolveJsonModule": true,
     "removeComments": true,
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@tests/*": ["../tests/*"]
     },
+    "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src", "src/**/*.json"],
+  "include": ["src", "src/**/*.json", "tests"],
   "exclude": [
     "./node_modules/*",
     "dist"

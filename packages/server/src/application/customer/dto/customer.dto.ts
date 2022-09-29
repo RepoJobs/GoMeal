@@ -19,13 +19,13 @@ export class CustomerDTO {
     this.firstName = name.firstName
     this.lastName = name.lastName
     this.email = email.email
-    this.addresses = addresses.map(address => ({
+    this.addresses = addresses?.map(address => ({
       street: address?.street || null,
       number: address?.number || null,
       zip_code: address?.zip_code || null,
       city: address?.city || null,
       state: address?.state || null,
       country: address?.country || null
-    }))
+    })) || []
   }
 }

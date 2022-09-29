@@ -34,6 +34,7 @@ export class CustomerRegisterService implements IService {
   }
 
   async execute(data: ICustomerRegisterData): Promise<CustomerDTO> {
+    // TODO: Rollback register when happens an error
     const { firstName, lastName, email, password, address } = data
 
     // address
@@ -54,9 +55,9 @@ export class CustomerRegisterService implements IService {
     user.changeID(userID)
     
     const customer = new Customer(user)
-    await Promise.allSettled([
-      await this._userRepository.addAddress(userID, customerAddress),
-      await this._customerRepository.create(customer)
+    await Promise.all([
+      this._userRepository.addAddress(userID, customerAddress),
+      this._customerRepository.create(customer)
     ])
 
     const customerDto = new CustomerDTO(user.name, user.email, user.addresses)

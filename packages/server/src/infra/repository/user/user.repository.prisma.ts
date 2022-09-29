@@ -1,17 +1,17 @@
 import { Address } from '@/domain/@shared/value-objects/address'
 import { User } from '@/domain/user/entities/user'
 import { IUserRepository } from '@/domain/user/repository/user.repository.interface'
-import { PrismaClient } from '@prisma/client'
+import { Prisma } from '@/infra/db/prisma/client'
 
 export class UserRepositoryPrisma implements IUserRepository {
-  private prisma: PrismaClient
+  private prisma: Prisma
 
   constructor() {
-    this.prisma = new PrismaClient()
+    this.prisma = new Prisma()
   }
 
   async create(user: User): Promise<number> {
-    const userInstance = await this.prisma.user.create({
+    const userInstance = await this.prisma.client.user.create({
       data: {
         first_name: user.name.firstName,
         last_name: user.name.lastName,
@@ -23,6 +23,8 @@ export class UserRepositoryPrisma implements IUserRepository {
       }
     })
 
+    console.log('userInstance=', userInstance)
+
     return userInstance.id
   }
 
@@ -32,27 +34,27 @@ export class UserRepositoryPrisma implements IUserRepository {
 
     const { street, number, zip_code, city, state, country } = address
 
-    const countryInstance = await this.prisma.country.findFirstOrThrow({
+    const countryInstance = await this.prisma.client.country.findFirstOrThrow({
       where: {
         name: country
       }
     })
 
-    const stateInstance = await this.prisma.state.findFirstOrThrow({
+    const stateInstance = await this.prisma.client.state.findFirstOrThrow({
       where: {
         name: state,
         countryId: countryInstance.id
       }
     })
 
-    const cityInstance = await this.prisma.city.findFirstOrThrow({
+    const cityInstance = await this.prisma.client.city.findFirstOrThrow({
       where: {
         name: city,
         stateId: stateInstance.id
       }
     })
 
-    await this.prisma.userAddress.create({
+    await this.prisma.client.userAddress.create({
       data: {
         street: street,
         number: number,
@@ -64,5 +66,4 @@ export class UserRepositoryPrisma implements IUserRepository {
       }
     })
   }
-
 }
