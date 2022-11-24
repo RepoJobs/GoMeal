@@ -23,8 +23,6 @@ export class UserRepositoryPrisma implements IUserRepository {
       }
     })
 
-    console.log('userInstance=', userInstance)
-
     return userInstance.id
   }
 

@@ -1,4 +1,4 @@
-export class InvalidPasswordhash extends Error {
+export class InvalidPasswordHash extends Error {
   public status_code: number
 
   constructor(message: string, status_code: number = 400) {
