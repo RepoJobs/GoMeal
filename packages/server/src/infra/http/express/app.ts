@@ -35,4 +35,8 @@ export class ExpressApp {
   listen() {
     this.express.listen(this.serverPort, () => console.log(`Your application is running on port ${this.serverPort}`))
   }
+
+  get get() {
+    return this.express
+  }
 }

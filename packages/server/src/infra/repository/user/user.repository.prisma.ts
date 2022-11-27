@@ -1,3 +1,4 @@
+import { InvalidAddress } from '@/domain/@shared/errors/invalid-address.error'
 import { Address } from '@/domain/@shared/value-objects/address'
 import { User } from '@/domain/user/entities/user'
 import { IUserRepository } from '@/domain/user/repository/user.repository.interface'
@@ -32,25 +33,32 @@ export class UserRepositoryPrisma implements IUserRepository {
 
     const { street, number, zip_code, city, state, country } = address
 
-    const countryInstance = await this.prisma.client.country.findFirstOrThrow({
-      where: {
-        name: country
-      }
-    })
+    let countryInstance, stateInstance, cityInstance
 
-    const stateInstance = await this.prisma.client.state.findFirstOrThrow({
-      where: {
-        name: state,
-        countryId: countryInstance.id
-      }
-    })
+    try {
+      countryInstance = await this.prisma.client.country.findFirstOrThrow({
+        where: {
+          name: country
+        }
+      })
+  
+      stateInstance = await this.prisma.client.state.findFirstOrThrow({
+        where: {
+          name: state,
+          countryId: countryInstance.id
+        }
+      })
+  
+      cityInstance = await this.prisma.client.city.findFirstOrThrow({
+        where: {
+          name: city,
+          stateId: stateInstance.id
+        }
+      })
+    } catch(err) {
+      throw new InvalidAddress('Invalid Address')
+    }
 
-    const cityInstance = await this.prisma.client.city.findFirstOrThrow({
-      where: {
-        name: city,
-        stateId: stateInstance.id
-      }
-    })
 
     await this.prisma.client.userAddress.create({
       data: {

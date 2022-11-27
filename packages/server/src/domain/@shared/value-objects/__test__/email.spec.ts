@@ -11,7 +11,7 @@ describe('Email value object unit test', () => {
   it('Should throw error when email is invalid', () => {
     expect(() => {
       const email = new Email('teste')
-    }).toThrowError('Email "teste" is invalid.')
+    }).toThrowError('Invalid email: teste')
   })
 
   it('Should throw error when email is empty', () => {

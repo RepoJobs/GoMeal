@@ -93,7 +93,7 @@ describe('Customer register application service unit test', () => {
       }
 
       await customerRegisterService.execute(data)
-    }).rejects.toThrowError('Email "joao123.com" is invalid.')
+    }).rejects.toThrowError('Invalid email: joao123.com')
   })
 
   it('Should throw error when try to create customer with invalid password', async () => {
@@ -147,6 +147,6 @@ describe('Customer register application service unit test', () => {
       }
 
       await customerRegisterService.execute(data)
-    }).rejects.toThrowError('The first name cannot be empty')
+    }).rejects.toThrowError('First name is required')
   })
 })

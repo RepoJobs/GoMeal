@@ -22,7 +22,7 @@ export class CustomerController {
       
       return res.status(201).json(response)
     } catch(err) {
-      console.log(err)
+      console.error(err)
       return checkAllErrors(err, res)
     }
   }

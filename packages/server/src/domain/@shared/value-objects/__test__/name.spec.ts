@@ -14,7 +14,7 @@ describe('name value object unittest', () => {
     expect(() => {
       const name = new Name('')
       const name2 = new Name(null)
-    }).toThrowError('The first name cannot be empty')
+    }).toThrowError('First name is required')
   })
 
   it('Should create name with first name and without last name', () => {
