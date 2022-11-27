@@ -19,6 +19,6 @@ export class Email {
       throw new InputError('Email cannot be empty')
 
     if(!regex.test(this.email))
-      throw new InputError(`Email "${this.email}" is invalid.`)
+      throw new InputError(`Invalid email: ${this.email}`)
   }
 }

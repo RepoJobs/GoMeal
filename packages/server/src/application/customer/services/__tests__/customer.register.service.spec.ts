@@ -1,8 +1,22 @@
 import { CustomerRegisterService, ICustomerRegisterData } from '@/application/customer/services/customer.register.service'
+import { CustomerRepositoryPrisma } from '../../../../infra/repository/customer/customer.repository.prisma'
+import { UserRepositoryPrisma } from '@/infra/repository/user/user.repository.prisma'
+import { Prisma } from '@/infra/db/prisma/client'
+import { generateLocalization } from '@tests/helpers/utils'
+
+beforeEach(async () => {
+  const prisma = new Prisma()
+  await prisma.clearAllTables()
+  prisma.disconnect()
+})
 
 describe('Customer register application service unit test', () => {
   it('Should create customer with address and valid informations', async () => {
-    const customerRegisterService = new CustomerRegisterService(null)
+    const customerRegisterService = new CustomerRegisterService(
+      new CustomerRepositoryPrisma(),
+      new UserRepositoryPrisma())
+
+    await generateLocalization('country 1', 'state 1', 'city 1')
 
     const data: ICustomerRegisterData = {
       firstName: 'Joao',
@@ -24,18 +38,20 @@ describe('Customer register application service unit test', () => {
     expect(customerDTO.firstName).toBe('Joao')
     expect(customerDTO.lastName).toBe('da Silva')
     expect(customerDTO.email).toBe('joao@teste.com')
-    expect(customerDTO.address).toBe({
+    expect(customerDTO.addresses).toMatchObject([{
       city: 'city 1',
       country: 'country 1',
       number: '10',
       state: 'state 1',
       street: 'street 1',
       zip_code: '60999-888'
-    })
+    }])
   })
 
   it('Should create customer without address', async () => {
-    const customerRegisterService = new CustomerRegisterService(null)
+    const customerRegisterService = new CustomerRegisterService(
+      new CustomerRepositoryPrisma(),
+      new UserRepositoryPrisma())
 
     const data: ICustomerRegisterData = {
       firstName: 'Joao',
@@ -50,19 +66,16 @@ describe('Customer register application service unit test', () => {
     expect(customerDTO.firstName).toBe('Joao')
     expect(customerDTO.lastName).toBe('da Silva')
     expect(customerDTO.email).toBe('joao@teste.com')
-    expect(customerDTO.address).toBe({
-      city: null,
-      country: null,
-      number: null,
-      state: null,
-      street: null,
-      zip_code: null
-    })
+    expect(customerDTO.addresses).toStrictEqual([])
   })
 
   it('Should throw error when try to create customer with invalid email', async () => {
     await expect(async () => {
-      const customerRegisterService = new CustomerRegisterService(null)
+      const customerRegisterService = new CustomerRegisterService(
+        new CustomerRepositoryPrisma(),
+        new UserRepositoryPrisma())
+
+      await generateLocalization('country 1', 'state 1', 'city 1')
 
       const data: ICustomerRegisterData = {
         firstName: 'Joao',
@@ -80,12 +93,16 @@ describe('Customer register application service unit test', () => {
       }
 
       await customerRegisterService.execute(data)
-    }).rejects.toThrowError('Email "joao123.com" is invalid.')
+    }).rejects.toThrowError('Invalid email: joao123.com')
   })
 
   it('Should throw error when try to create customer with invalid password', async () => {
     await expect(async () => {
-      const customerRegisterService = new CustomerRegisterService(null)
+      const customerRegisterService = new CustomerRegisterService(
+        new CustomerRepositoryPrisma(),
+        new UserRepositoryPrisma())
+
+      await generateLocalization('country 1', 'state 1', 'city 1')
 
       const data: ICustomerRegisterData = {
         firstName: 'Joao',
@@ -108,7 +125,11 @@ describe('Customer register application service unit test', () => {
 
   it('Should throw error when try to create customer with empty first name', async () => {
     await expect(async () => {
-      const customerRegisterService = new CustomerRegisterService(null)
+      const customerRegisterService = new CustomerRegisterService(
+        new CustomerRepositoryPrisma(),
+        new UserRepositoryPrisma())
+
+      await generateLocalization('country 1', 'state 1', 'city 1')
 
       const data: ICustomerRegisterData = {
         firstName: '',
@@ -126,6 +147,6 @@ describe('Customer register application service unit test', () => {
       }
 
       await customerRegisterService.execute(data)
-    }).rejects.toThrowError('The first name cannot be empty')
+    }).rejects.toThrowError('First name is required')
   })
 })

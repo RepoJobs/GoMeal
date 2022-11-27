@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:12
+    container_name: gomeal-test-pg
+    environment:
+      POSTGRES_DB: gomeal-testdb
+      POSTGRES_USER: gomeal-test
+      POSTGRES_PASSWORD: gomeal-test
+    network_mode: bridge
+    ports:
+      - 54320:5432

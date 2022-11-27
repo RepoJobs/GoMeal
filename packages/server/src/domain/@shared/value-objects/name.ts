@@ -25,6 +25,6 @@ export class Name {
 
   private validate() {
     if(!this.firstName || this.firstName.length == 0)
-      throw new InputError('The first name cannot be empty')
+      throw new InputError('First name is required')
   }
 }

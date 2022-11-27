@@ -1,20 +1,13 @@
-import { Address } from '@/domain/@shared/value-objects/address'
 import { User } from '@/domain/user/entities/user'
 
-export class Customer extends User {
-  private _address: Address
+export class Customer {
+  private _user: User
 
-  get address() {
-    return this._address
+  constructor(user: User) {
+    this._user = user
   }
 
-  changeAddress(address: Address) {
-    this._address = address
-    this.validateAddress()
-  }
-
-  protected validateAddress() {
-    if(!this._address)
-      throw Error('Address cannot be empty')
+  get user(): User {
+    return this._user
   }
 }
