@@ -7,9 +7,5 @@ export const checkAllErrors = (error: any, res: Response) => {
   if(!error.message)
     return ResponseGenericError(res)
 
-  try {
-    return ResponseCommon(error, res)
-  } catch(err) {
-    return ResponseGenericError(res)
-  }
+  return ResponseCommon(error, res)
 }
