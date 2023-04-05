@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ISidebarMenu } from './types'
 import SidebarButton from './sidebarButton';
-import AdvertisementCard from './AdvertisementCard ';
+import AdvertisementCard from './AdvertisementCard';
 import './style.scss';
 
 const SidebarMenu = ({ logotype, listTabs }: ISidebarMenu) => {
